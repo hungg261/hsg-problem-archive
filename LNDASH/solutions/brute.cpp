@@ -1,10 +1,29 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <iomanip>
+
 using namespace std;
 
-signed main(){
-    ios_base::sync_with_stdio(0); cin.tie(0);
-
-    cout << "I am your brute force solution!" << endl;
-
+int main() {
+    int N, T, Q;
+    cin >> N >> T >> Q;
+    vector<double> steps(T + 1, 1.0);
+    for (int i = 0; i < N; ++i) {
+        int c; char s;
+        cin >> c >> s;
+        double d = (s == '-') ? 1.0 : sqrt(2.0);
+        for (int j = c; j <= T; ++j) steps[j] = d;
+    }
+    vector<double> pref(T + 1, 0.0);
+    for (int i = 1; i <= T; ++i) pref[i] = pref[i-1] + steps[i];
+    
+    cout << fixed << setprecision(6);
+    while (Q--) {
+        int L, R;
+        cin >> L >> R;
+        if (L >= R) cout << "0.000000\n";
+        else cout << pref[R-1] - pref[L-1] << "\n";
+    }
     return 0;
 }

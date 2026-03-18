@@ -4,7 +4,7 @@ touch .inp .out .ans
 i=1
 while true
 do
-    ./gen $i small > .inp
+    ./gen $i sub3 max > .inp
     ./solution < .inp > .out
     ./brute < .inp > .ans
 
