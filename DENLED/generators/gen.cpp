@@ -34,6 +34,7 @@ int32_t main(int32_t argc, char* argv[]) {
     if(sub == "sub1"){
         n = rnd.next(5, 20);
         k = rnd.next(3, 60);
+        MAX = 50;
         if(param == "max") n = 20;
     }
     else if(sub == "sub2"){
