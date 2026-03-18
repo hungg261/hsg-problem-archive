@@ -8,18 +8,26 @@ Cho $n$ cảm biến đất và $m$ cảm biến không khí, chia thành các t
 - Mỗi trạm có số lượng cảm biến không khí bằng nhau  
 - Sử dụng hết tất cả các cảm biến  
 
+#### Input
+- Dòng đầu tiên chứa hai số nguyên $n, m$ $(1 \le n, m \le 10^{18})$  
+
+#### Output
+- Dòng đầu tiên: số trạm tối đa có thể chia được.  
+- Dòng thứ hai: số cảm biến đất và số cảm biến không khí tại mỗi trạm.
+
 #### Subtasks
 
 - **40% điểm:** $n, m \le 10^7$.
 - **60% điểm:** $n, m \le 10^{18}$.  
 
-#### Input
+#### Ví dụ
 
+**Input:**
 ```
 120 160
 ```
 
-#### Output
+**Output:**
 
 ```
 40

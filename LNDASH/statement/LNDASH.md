@@ -64,6 +64,9 @@ Kết quả cần được làm tròn đến đúng **6 chữ số thập phân*
 | 4             | \         |
 | 5             | \         |
 
+Với lộ trình di chuyển là:
+![Hình minh họa](minh_hoa.png)
+
 - **Truy vấn `[1,5]`:**  
   Các bước đi: $1 \to 2$, $2 \to 3$, $3 \to 4$, $4 \to 5$  
   Quãng đường = $\sqrt{2} + \sqrt{2} + 1 + \sqrt{2} = 3\sqrt{2} + 1 = 5.242641$

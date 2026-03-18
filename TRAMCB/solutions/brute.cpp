@@ -1,10 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 
-signed main(){
-    ios_base::sync_with_stdio(0); cin.tie(0);
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    cout << "I am your brute force solution!" << endl;
+    ll n, m;
+    cin >> n >> m;
+
+    ll maxTram = 1;
+    for(ll i = 1; i <= min(n, m); i++) {
+        if(n % i == 0 && m % i == 0) maxTram = i;
+    }
+
+    cout << maxTram << "\n";
+    cout << n / maxTram << " " << m / maxTram << "\n";
 
     return 0;
 }
