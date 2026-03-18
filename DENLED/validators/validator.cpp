@@ -9,7 +9,7 @@ signed main(int32_t argc, char* argv[]){
     
     int n = inf.readInt(1, 1000, "n");
     inf.readSpace();
-    int k = inf.readInt(1, 1000, "k");
+    int k = inf.readInt(1, 100, "k");
     inf.readEoln();
 
     for(int i = 1; i <= n; ++i){

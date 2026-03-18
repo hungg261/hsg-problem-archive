@@ -29,7 +29,7 @@ int32_t main(int32_t argc, char* argv[]) {
     const string sub = opt<string>(2);
     const string param = opt<string>(3);
 
-    int n = 1000, k = 1000;
+    int n = 1000, k = 100;
     int MAX = 1'000'000'000;
     if(sub == "sub1"){
         n = rnd.next(5, 20);
@@ -44,14 +44,14 @@ int32_t main(int32_t argc, char* argv[]) {
     }
     else if(sub == "sub3" || sub == "sub4"){
         n = rnd.next(900, 1000);
-        k = rnd.next(TEST * 2, 1000LL);
+        k = rnd.next(TEST, 100LL);
         if(param == "max") n = 1000;
     }
 
     println(n, k);
 
     if(sub == "sub3"){
-        for(int ele: reshard(n, 10'000)){
+        for(int ele: reshard(n, rnd.next(9'800, 10'000))){
             cout << ele << " ";
         }
     }
