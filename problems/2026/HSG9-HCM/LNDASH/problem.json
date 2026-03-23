@@ -4,16 +4,19 @@
 
   "source": "HSG9-HCM-2026",
   "difficulty": "easy",
-  "rating": 0,
+  "rating": 1500,
 
   "tags": [
     "binary search",
-    "prefix sum"
+    "prefix sum",
+    "geometry",
+    "math",
+    "implementation"
   ],
 
   "limits": {
     "time_limit_sec": 1,
-    "memory_limit_mb": 256
+    "memory_limit_mb": 1024
   },
 
   "interactive": false
