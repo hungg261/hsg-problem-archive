@@ -1,6 +1,6 @@
-# Sinh test cho các kì thi HSG
+# Sinh test cho các kì thi tuyển sinh và HSG
 
-Bộ công cụ sinh test chuẩn (testlib/polygon) cho các kỳ thi HSG Tin học Việt Nam.
+Bộ công cụ sinh test chuẩn (testlib/polygon) cho các kỳ thi tuyển sinh, HSG Tin học Việt Nam.
 
 Cấu trúc mẫu: https://github.com/hungg261/problemset-template
 
