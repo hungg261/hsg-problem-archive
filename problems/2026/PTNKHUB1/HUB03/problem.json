@@ -1,0 +1,15 @@
+{
+  "name": "HUB03",
+  "title": "MOVE",
+  "source": "PTNKHUB1-2026",
+  "difficulty": "easy",
+  "rating": 0,
+  "tags": [
+    "unspecified"
+  ],
+  "limits": {
+    "time_limit_sec": 1.0,
+    "memory_limit_mb": 1024
+  },
+  "interactive": false
+}
