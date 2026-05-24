@@ -2,10 +2,14 @@
   "name": "VERYODD",
   "title": "BAI3",
   "source": "PTNK-TS10",
-  "difficulty": "medium",
-  "rating": 0,
+  "difficulty": "hard",
+  "rating": 2000,
   "tags": [
-    "unspecified"
+    "number theory",
+    "math",
+    "sieve",
+    "pollard's rho",
+    "miller-rabin"
   ],
   "limits": {
     "time_limit_sec": 1.0,
