@@ -3,9 +3,10 @@
   "title": "BAI2",
   "source": "PTNK-TS10",
   "difficulty": "medium",
-  "rating": 0,
+  "rating": 1300,
   "tags": [
-    "unspecified"
+    "prefix sum",
+    "math"
   ],
   "limits": {
     "time_limit_sec": 1.0,
