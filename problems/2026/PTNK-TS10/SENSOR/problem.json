@@ -1,0 +1,15 @@
+{
+  "name": "SENSOR",
+  "title": "BAI2",
+  "source": "PTNK-TS10",
+  "difficulty": "medium",
+  "rating": 0,
+  "tags": [
+    "unspecified"
+  ],
+  "limits": {
+    "time_limit_sec": 1.0,
+    "memory_limit_mb": 1024
+  },
+  "interactive": false
+}
