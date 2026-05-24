@@ -2,10 +2,10 @@
   "name": "STRING",
   "title": "BAI1",
   "source": "PTNK-TS10",
-  "difficulty": "medium",
-  "rating": 0,
+  "difficulty": "easy",
+  "rating": 800,
   "tags": [
-    "unspecified"
+    "greedy"
   ],
   "limits": {
     "time_limit_sec": 1.0,
