@@ -1,0 +1,21 @@
+{
+  "name": "PROBLEMCODE",
+  "title": "Problem name",
+
+  "source": "Original",
+  "difficulty": "easy",
+  "rating": 800,
+
+  "tags": [
+    "tag1",
+    "tag2",
+    "tag3"
+  ],
+
+  "limits": {
+    "time_limit_sec": 1,
+    "memory_limit_mb": 256
+  },
+
+  "interactive": false
+}
