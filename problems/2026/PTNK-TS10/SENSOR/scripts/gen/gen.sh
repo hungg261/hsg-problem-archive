@@ -24,7 +24,7 @@ done
 for i in {21..25}
 do
     echo "Generating test $i (sub3-weak)"
-    ./gen $i 300000 1000000000 0 > ../tests/$i.inp
+    ./gen $i 300000 100 0 > ../tests/$i.inp
 done
 
 for i in {26..40}
