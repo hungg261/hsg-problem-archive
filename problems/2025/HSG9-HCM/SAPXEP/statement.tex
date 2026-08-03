@@ -1,0 +1,47 @@
+\makeproblem{SAPXEP}{Sắp xếp}{1.0s}{1024 MB}
+
+Sắp xếp nổi bọt (Bubble Sort) là một trong những thuật toán đơn giản và dễ hiểu. Thuật toán sắp xếp nổi bọt thực hiện sắp xếp dãy phần tử bằng cách liên tục lặp lại việc so sánh hai phần tử liền kề và hoán đổi vị trí của chúng nếu chung không theo thứ tự mong muốn. Quá trình này được lặp lại cho đến khi toàn bộ dãy đã được sắp xếp hoàn chỉnh.
+
+Cho dãy số nguyên dương $a$ gồm $n$ phần tử  $a_1, a_2, \dots, a_n$.
+
+\medskip
+\textbf{Yêu cầu:} Hãy viết chương trình đếm số lần hoán đổi vị trí các phần tử theo thuật toán sắp xếp nổi bọt để sắp xếp dãy tăng dần.
+
+\makesection{Input}
+\begin{itemize}
+    \item Dòng thứ nhất chứa số nguyên dương $n\ (1 \le n \le 2 \times 10^{5})$.
+    \item Dòng thứ hai chứa $n$ số nguyên dương $a_1, a_2, \dots, a_n\ (1 \le a_i \le 10^{9}; 1 \le i \le n)$ cách nhau một khoảng trắng là các phần tử trong dãy.
+\end{itemize}
+
+\makesection{Output}
+\begin{itemize}
+    \item Gồm một số nguyên duy nhất là số lần hoán đổi các vị trí khi thực hiện thuật toán sắp xếp nổi bọt.
+\end{itemize}
+
+\begin{makesubtasks}
+    \subtask{80} $1 \le n \le 10^{3}$.
+    \subtask{20} $1 \le n \le 2 \times 10^{5}$.
+\end{makesubtasks}
+
+\makesection{Ví dụ}
+
+\subsubsection*{Ví dụ 1}
+\begin{makesample}
+\begin{lstlisting}
+4
+3 1 4 2
+\end{lstlisting}
+\nextsample
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{makesample}
+
+\begin{explain}
+Theo thuật toán sắp xếp nổi bọt có $3$ lần hoán đổi vị trí các phần tử gồm:
+\begin{itemize}
+\item Lần thứ nhất, hoán đổi vị trí của hai phần tử $(3, 1)$, dãy trở thành $1,3,4,2$.
+\item Lần thứ hai, hoán đổi vị trí của hai phần tử $(2, 4)$, dãy trở thành $1,3,2,4$.
+\item Lần thứ ba, hoán đổi vị trí của hai phần tử $(2, 3)$, dãy trở thành $1,2,3,4$.
+\end{itemize}
+\end{explain}

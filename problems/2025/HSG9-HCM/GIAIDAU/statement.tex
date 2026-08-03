@@ -1,0 +1,59 @@
+\makeproblem{GIAIDAU}{Giải đấu}{1.0s}{1024 MB}
+
+Trong mùa hè năm nay, công ty game AlphaNet sẽ tổ chức giải đấu trực tuyến cho tất cả game thủ của mình. Danh sách tên các game thủ được đánh số thứ tự từ $1$ đến $n$. Mỗi game thủ có một ranking (thứ hạng trong game) khác nhau. Trước khi bắt đầu giải, ban tổ chức sẽ cho các game thủ giao lưu với nhau thông qua $q$ lượt đấu đồng đội bằng cách ghép đôi ngẫu nhiên ở mỗi lượt đấu, ban tổ chức thực hiện ghép đôi ngẫu nhiên như sau:
+
+\medskip
+Cho hệ thống sinh ngẫu nhiên hai số $u, v$ ($u < v$) để xác định nhóm các thành viên được chọn tham gia là các game thủ trong danh sách có số thứ tự từ $u$ đến $v$. Tiếp theo ban tổ chức sẽ chia nhóm các thành viên được chọn thành hai đội tương đối đều nhau về ranking. Ranking của một đội là tổng ranking của các thành viên trong đội. Do đó, ban tổ chức phải tính toán để xác định một vị trí sao cho độ lệch ranking giữa hai đội là nhỏ nhất và các thành viên trong đội phải có số thứ tự liên tiếp nhau trong danh sách (không quan trọng số lượng thành viên trong đội).
+
+
+\medskip
+\textbf{Yêu cầu:} Cho một dãy $n$ game thủ với ranking tương ứng và $q$ cặp số nguyên $u, v$ được hệ thống sinh ngẫu nhiên, hãy viết chương trình cho biết độ lệch ranking nhỏ nhất của từng lượt sau khi ban tổ chức thực hiện ghép đội ngẫu nhiên.
+
+\makesection{Input}
+Gồm $q + 2$ dòng:
+\begin{itemize}
+    \item Dòng thứ nhất chứa hai số nguyên dương $n, q$ ($1 \le n, q \le 10^5$).
+    \item Dòng thứ hai chứa $n$ số nguyên dương $a_1, a_2, \dots, a_n$ ($1 \le a_i \le 10^9; 1 \le i \le n$) cách nhau một khoảng trắng.
+    \item $q$ dòng tiếp theo, mỗi dòng chứa hai số nguyên dương $u, v$ ($1 \le u < v \le n$) cách nhau một khoảng trắng tương ứng với mỗi lượt đấu.
+\end{itemize}
+
+\makesection{Output}
+\begin{itemize}
+    \item Gồm $q$ dòng, dòng thứ $i$ là kết quả tìm được ở lượt thứ $i$.
+\end{itemize}
+
+\begin{makesubtasks}
+    \subtask{40} $1 \le n, q \le 100$.
+    \subtask{40} $1 \le n \le 10^3; 1 \le q \le 10^4$.
+    \subtask{20} $1 \le n, q \le 10^5$.
+\end{makesubtasks}
+
+\makesection{Ví dụ}
+
+\subsubsection*{Ví dụ 1}
+\begin{makesample}
+\begin{lstlisting}
+6 2
+4 2 2 1 5 6
+1 4
+2 5
+\end{lstlisting}
+\nextsample
+\begin{lstlisting}
+1
+0
+\end{lstlisting}
+\end{makesample}
+
+\begin{explain}
+\begin{itemize}
+    \item Ở lượt thứ nhất, ranking của các game thủ số thứ tự từ $1$ đến $4$ là $4, 2, 2, 1$. Ta có thể chia đội như sau:
+    \begin{itemize}
+        \item $\{4\}$ và $\{2, 2, 1\}$, độ lệch ranking là $1$.
+        \item $\{4, 2\}$ và $\{2, 1\}$, độ lệch ranking là $3$.
+        \item $\{4, 2, 2\}$ và $\{1\}$, độ lệch ranking là $7$.
+    \end{itemize}
+    Ban tổ chức sẽ chia đội theo cách chia đầu tiên với độ lệch ranking nhỏ nhất là $1$.
+    \item Ở lượt thứ hai, ranking của các game thủ có số $2$ đến $5$ là $2, 2, 1, 5$. Ban tổ chức sẽ chia đội thành $\{2, 2, 1\}$ và $\{5\}$ với độ lệch ranking nhỏ nhất là $0$.
+\end{itemize}
+\end{explain}

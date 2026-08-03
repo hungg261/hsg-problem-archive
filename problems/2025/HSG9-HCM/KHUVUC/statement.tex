@@ -1,0 +1,55 @@
+\makeproblem{KHUVUC}{Khu vực}{1.0s}{1024 MB}
+
+Vùng đất thần tiên AlphaLand rộng lớn được chia thành nhiều khu vực khác nhau. Các khu vực được đánh số $1,2,3,\dots$.
+
+Việc phân chia khu vực sinh sống, lao động, vui chơi cho người dân cũng khá kì lạ. Mỗi người dân được cấp một cái thẻ chứa một con số và họ chỉ được phép ra vào khu vực có số thứ tự là ước số của số thẻ. Các số trên thẻ của người dân được phép trùng nhau.
+
+Mỗi dịp lễ hội thường niên, trưởng lão sẽ tập trung tât cả người dân về một khu vực để tổ chức tiệc mừng. Năm nay, ông quyết định mở tiệc tại khu vực mà tất cả người dân được phép ra vào khu vực đó có số thứ tự lớn nhất.
+
+Nhận thấy rằng có một số thẻ đã cấp cho người dân làm ảnh hưởng đến việc chọn khu vực như trên, ông quyết định đổi cho một trong số họ cái thẻ mới để chọn được khu vực tổ chức tiệc có số thứ tự lớn hơn.
+
+\medskip
+\textbf{Yêu cầu:} Cho danh sách $n$ thẻ với các số tương ứng. Hãy viết chương trình tìm khu vực mà tất cả người dân được phép ra vào và khu vực đó có số thứ tự lớn nhất. Lưu ý, việc xác định khu vực thực hiện sau khi người dân được đổi thẻ.
+
+\makesection{Input}
+\begin{itemize}
+    \item Dòng thứ nhất chứa số nguyên dương $n\ (1 \le n \le 10^{5})$. \\
+    \small\noindent\textbf{Lưu ý:} Dù đề bài cho phép $n=1$, tuy nhiên bộ test sẽ luôn đảm bảo $n>1$.
+    \item Dòng thứ hai chứa $n$ số nguyên dương $a_1, a_2, \dots, a_n\ (1 \le a_i \le 10^{9}; 1 \le i \le n)$ cách nhau một khoảng trắng là số thẻ của người dân.
+\end{itemize}
+
+
+\makesection{Output}
+\begin{itemize}
+    \item Gồm một số nguyên duy nhất là số thứ tự của khu vực tìm được theo yêu cầu trên.
+\end{itemize}
+
+\begin{makesubtasks}
+    \subtask{40} $1 \le n \le 100; 1 \le a_i \le 100$.
+    \subtask{40} $1 \le n \le 10^{3}$.
+    \subtask{20} $1 \le n \le 10^{5}$.
+\end{makesubtasks}
+
+\makesection{Ví dụ}
+
+\subsubsection*{Ví dụ 1}
+\begin{makesample}
+\begin{lstlisting}
+3
+4 2 8
+\end{lstlisting}
+\nextsample
+\begin{lstlisting}
+4
+\end{lstlisting}
+\end{makesample}
+
+\begin{explain}
+\begin{itemize}
+    \item Thẻ số $4$ đến được các khu vực $\{1,2,4\}$;
+    \item Thẻ số $2$ đến được các khu vực $\{1,2\}$;
+    \item Thẻ số $8$ đến được các khu vực $\{1,2,4,8\}$.
+\end{itemize}
+
+Ban đầu khu vực dự kiến chọn là $2$, có thể đổi số thẻ $2$ thành số $4$. Với các thẻ $4,4,8$ chọn khu vực có số thứ tự lớn hơn là $4$. 
+\end{explain}
