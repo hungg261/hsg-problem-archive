@@ -2,6 +2,9 @@ bin/
 *.exe
 *.o
 
+*.in
+!**/sample.in
+
 *.inp
 *.out
 
