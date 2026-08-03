@@ -4,9 +4,9 @@
     "input_extension": ".in",
     "output_extension": ".out",
     "source": "hsg9-hcm",
-    "time_limit_ms": 1600,
+    "time_limit_ms": 1000,
     "memory_limit_mb": 1024,
-    "rating": 0,
+    "rating": 1600,
     "tags": [
         "data structures",
         "sorting"
