@@ -3,10 +3,9 @@ bin/
 *.o
 
 *.in
-!**/sample.in
-
 *.inp
 *.out
+!**/custom/*
 
 tests/*
 !tests/.gitkeep
