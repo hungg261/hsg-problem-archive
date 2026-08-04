@@ -1,0 +1,59 @@
+\makeproblem{DAOVANG}{Bài 3: ĐÀO VÀNG}{1.0s}{1024 MB}
+
+Đào vàng là trò chơi khá phổ biến và có nhiều phiên bản. Hãy cùng xét một phiên bản của trò chơi này. Có $N$ thỏi vàng được cố định ở các vị trí $X_1, X_2, X_3, \dots, X_N$ trên một trục nằm ngang. Nếu người chơi đào ở vị trí $X$ với máy khoan có lực đập $R$ thì có thể lấy được các thỏi vàng cách vị trí $X$ tối đa $R$ đơn vị chiều dài hay các thỏi vàng có vị trí nằm trong khoảng $[X - R; X + R]$. Người chơi được đào tối đa $K$ lần và lực đập $R$ là giống nhau ở các lần đào. Nếu người chơi chọn lực đập $R$ càng nhỏ thì số điểm đạt được càng cao và ngược lại. Người chơi được thực hiện tối đa $K$ lần đào, hãy giúp người chơi chọn lực đập $R$ nhỏ nhất để có thể đào hết $N$ thỏi vàng.
+
+\medskip
+\textbf{Yêu cầu:} Cho trước vị trí của $N$ thỏi vàng, hãy viết chương trình tìm giá trị nguyên $R$ bé nhất sao cho người chơi có thể lấy được $N$ thỏi vàng sau tối đa $K$ lần đào.
+
+\makesection{Input}
+\begin{itemize}
+    \item Dòng đầu chứa hai số nguyên $N$ và $K$ lần lượt cho biết số lượng thỏi vàng và số lần đào tối đa.
+    \item Dòng thứ $i$ trong $N$ dòng tiếp theo cho biết vị trí $X_i$ ($0 \le X_i \le 10^9$) của thỏi vàng thứ $i$.
+\end{itemize}
+
+\makesection{Output}
+\begin{itemize}
+    \item Ghi ra một số nguyên là giá trị lực đập $R$ bé nhất để lấy được $N$ thỏi vàng sau tối đa $K$ lần đào.
+\end{itemize}
+
+\begin{makesubtasks}
+    \subtask{20} $K = 1$ và $N \le 1000$.
+    \subtask{20} $K = 2$ và $N \le 10\,000$.
+    \subtask{60} $K \le 20$ và $N \le 50\,000$.
+\end{makesubtasks}
+
+\makesection{Ví dụ}
+
+\subsubsection*{Ví dụ 1}
+\begin{makesample}
+\begin{lstlisting}
+6 1
+2
+20
+6
+5
+4
+17
+\end{lstlisting}
+\nextsample
+\begin{lstlisting}
+9
+\end{lstlisting}
+\end{makesample}
+
+\subsubsection*{Ví dụ 2}
+\begin{makesample}
+\begin{lstlisting}
+6 2
+2
+20
+6
+5
+4
+17
+\end{lstlisting}
+\nextsample
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{makesample}

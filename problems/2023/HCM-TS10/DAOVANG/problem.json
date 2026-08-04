@@ -1,0 +1,15 @@
+{
+    "problem_name": "ĐÀO VÀNG",
+    "solution_file": "solutions/ma_solution.cpp",
+    "input_extension": ".in",
+    "output_extension": ".out",
+    "source": "HCM-TS10",
+    "time_limit_ms": 1000,
+    "memory_limit_mb": 1024,
+    "rating": 1400,
+    "tags": [
+        "binary search",
+        "greedy"
+    ],
+    "checker": "ncmp"
+}
