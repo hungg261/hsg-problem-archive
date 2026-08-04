@@ -1,0 +1,39 @@
+\makeproblem{LUYTHUA}{Bài 1: LŨY THỪA}{1.0s}{1024 MB}
+
+An vừa được học phép tính lũy thừa và biết được rằng $a^n = \underbrace{a \times \dots \times a}_{n}$. Cô giáo đã giao cho An một số bài tập trên lớp học trực tuyến để luyện tập tính lũy thừa. Các bài tập có dạng tính giá trị $Y = A_1^{X_1} + A_2^{X_2} + A_3^{X_3} + \dots + A_N^{X_N}$ với $A_1, A_2, A_3 \dots A_N$ là các số nguyên dương và $X_1, X_2, X_3 \dots X_N$ là các số nguyên không âm có 1 chữ số. An đã thực hiện xong các bài tập và muốn kiểm tra lại đáp án bằng một chương trình tính toán. Tuy nhiên khi An nhập dữ liệu cho chương trình thì không nhập được số mũ có định dạng chỉ số trên nên chỉ có thể nhập $Y = P_1 + P_2 + P_3 + \dots + P_N$ trong đó $P_i$ có dạng $A_iX_i$. Ví dụ bài tập khi xem trên lớp học trực tuyến thì biểu thức có dạng $Y = 2^5 + 3^5 + 10^3 + 215^2$ nhưng khi nhập vào chương trình thì có dạng $Y = 25 + 35 + 103 + 2152$.
+
+\medskip
+\textbf{Yêu cầu:} Hãy viết chương trình tính giá trị biểu thức là tổng các lũy thừa nhưng biểu thức được nhập như mô tả ở trên.
+
+\makesection{Input}
+\begin{itemize}
+    \item Dòng đầu là một số nguyên $N$ cho biết số lượng số hạng của biểu thức cần tính.
+    \item Dòng thứ $i$ trong $N$ dòng tiếp theo cho biết số nguyên $P_i$.
+\end{itemize}
+
+\makesection{Output}
+\begin{itemize}
+    \item Ghi ra cho biết giá trị của biểu thức cần tính. Có thể giả sử rằng giá trị các biểu thức luôn nhỏ hơn $10^9$.
+\end{itemize}
+
+\begin{makesubtasks}
+    \subtask{40} $1 \le N \le 3$ và $10 \le P_i < 100$.
+    \subtask{60} $1 \le N \le 20$ và $10 \le P_i < 10\,000$.
+\end{makesubtasks}
+
+\makesection{Ví dụ}
+
+\subsubsection*{Ví dụ 1}
+\begin{makesample}
+\begin{lstlisting}
+4
+25
+35
+103
+2152
+\end{lstlisting}
+\nextsample
+\begin{lstlisting}
+47500
+\end{lstlisting}
+\end{makesample}
