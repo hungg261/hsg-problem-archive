@@ -2,6 +2,14 @@
 
 Bộ công cụ sinh test chuẩn (testlib/polygon) cho các kỳ thi tuyển sinh, HSG Tin học Việt Nam.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/dark_bg.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/bright_bg.png">
+  <img alt="Project Logo" src="assets/bright_bg.png">
+</picture>
+
+<hr>
+
 Cấu trúc mẫu: https://github.com/hungg261/polyson/tree/main/polyson/templates/sample
 
 **Lưu ý:** Riêng năm [2026](./problems/2026/), sử dụng mẫu: https://github.com/hungg261/problemset-template
