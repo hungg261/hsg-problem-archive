@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Problemset Archive</title>
+    <link rel="icon" media="(prefers-color-scheme: light)" href="assets/bright_bg.ico">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="assets/dark_bg.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <style>
         :root {
-            --bg-color: #f4f5f7;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --text-main: #1c252e;
-            --text-muted: #637381;
-            --border-color: #dfe3e8;
-            --primary-color: #1a365d;
-            --primary-hover: #2b6cb0;
-            --accent-bg: #edf2f7;
+            --header-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --primary-color: #1e293b;
+            --primary-hover: #2563eb;
+            --accent-bg: #f1f5f9;
+            --accent-border: #2563eb;
+            --badge-bg: #f1f5f9;
+            --badge-text: #334155;
+            --code-bg: #f1f5f9;
+            --main-section-bg: #ffffff;
+            --folder-color: #3b82f6;
         }
 
         * {
@@ -40,45 +49,95 @@
             margin: 0 auto;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
             overflow: hidden;
         }
 
         .header {
-            padding: 28px 32px 20px 32px;
-            border-bottom: 2px solid var(--primary-color);
-            background-color: #fafbfc;
+            padding: 24px 32px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--header-bg);
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        .header h1 {
+        .header-logo img {
+            width: 56px;
+            height: auto;
+            display: block;
+        }
+
+        .header-info h1 {
             font-family: 'Merriweather', Georgia, serif;
             font-size: 22px;
             color: var(--primary-color);
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
-        .header p {
-            font-size: 14px;
+        .header-info p {
+            font-size: 13.5px;
             color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .header-tag {
-            background-color: #e2e8f0;
-            color: #2d3748;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
             padding: 2px 8px;
             border-radius: 4px;
             font-size: 12px;
             font-weight: 600;
+            border: 1px solid var(--border-color);
         }
 
         .content {
             padding: 32px;
+        }
+
+        .main-problems-section {
+            background: var(--main-section-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-border);
+            border-radius: 6px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            margin-bottom: 36px;
+        }
+
+        .main-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-section-title {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 17px;
+            color: var(--primary-color);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .count-badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            border: 1px solid var(--border-color);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 12px;
+            display: none;
         }
 
         .section-title {
@@ -97,14 +156,14 @@
 
         ul.tree-list ul {
             list-style: none;
-            padding-left: 22px;
+            padding-left: 20px;
             margin-top: 4px;
-            border-left: 1px dashed var(--border-color);
-            margin-left: 9px;
+            border-left: 1px solid var(--border-color);
+            margin-left: 10px;
         }
 
         li.tree-item {
-            margin: 4px 0;
+            margin: 3px 0;
         }
 
         .folder-title, .file-link {
@@ -112,28 +171,29 @@
             align-items: center;
             gap: 8px;
             padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 15px;
-            transition: background-color 0.15s ease;
+            border-radius: 4px;
+            font-size: 14.5px;
+            transition: background-color 0.15s ease, color 0.15s ease;
         }
 
         .folder-title {
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--text-main);
             cursor: pointer;
             user-select: none;
         }
 
         .folder-title:hover {
             background-color: var(--accent-bg);
+            color: var(--primary-hover);
         }
 
         .folder-icon {
             font-style: normal;
-            font-size: 14px;
-            width: 16px;
+            font-size: 12px;
+            width: 14px;
             text-align: center;
-            color: #2b6cb0;
+            color: var(--folder-color);
         }
 
         .file-link {
@@ -144,14 +204,13 @@
         .file-link:hover {
             color: var(--primary-hover);
             background-color: var(--accent-bg);
-            text-decoration: underline;
         }
 
         .file-icon {
             font-style: normal;
             font-size: 13px;
             color: var(--text-muted);
-            width: 16px;
+            width: 14px;
             text-align: center;
         }
 
@@ -166,13 +225,13 @@
         .readme-container, .license-container {
             margin-top: 36px;
             padding: 24px;
-            background-color: #fafbfc;
+            background-color: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         .markdown-body {
-            font-size: 15px;
+            font-size: 14.5px;
             line-height: 1.7;
         }
 
@@ -188,10 +247,10 @@
         }
 
         .markdown-body code {
-            background-color: #e2e8f0;
+            background-color: var(--code-bg);
             padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 13.5px;
+            border-radius: 4px;
+            font-size: 13px;
         }
 
         .license-summary {
@@ -202,9 +261,9 @@
         }
 
         .license-card {
-            background: #ffffff;
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 6px;
             padding: 16px;
         }
 
@@ -220,7 +279,7 @@
             font-weight: 700;
             text-transform: uppercase;
             padding: 3px 8px;
-            border-radius: 3px;
+            border-radius: 4px;
             letter-spacing: 0.5px;
         }
 
@@ -265,12 +324,12 @@
         }
 
         .cond-card li::before {
-            content: "ℹ";
+            content: "•";
             color: #2563eb;
         }
 
         .limit-card li::before {
-            content: "✕";
+            content: "×";
             color: #dc2626;
         }
 
@@ -296,10 +355,10 @@
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
             font-size: 12.5px;
             color: var(--text-muted);
-            background: #ffffff;
+            background: var(--bg-color);
             padding: 16px;
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 6px;
             margin-top: 10px;
             overflow-x: auto;
             max-height: 240px;
@@ -316,11 +375,12 @@
 
         .footer {
             padding: 16px 32px;
-            background-color: #fafbfc;
+            background-color: var(--header-bg);
             border-top: 1px solid var(--border-color);
             font-size: 13px;
             display: flex;
             justify-content: flex-end;
+            gap: 20px;
         }
 
         .footer a {
@@ -338,19 +398,31 @@
 
     <div class="container">
         <div class="header">
-            <h1>Problemset Archive</h1>
-            <p>
-                <span>Tác giả: <strong>hungg261</strong></span>
-                <span class="header-tag">Đề thi & Testcase</span>
-                <span class="header-tag">Polygon/testlib.h</span>
-                <span class="header-tag">MIT License</span>
-            </p>
+            <picture class="header-logo">
+                <source media="(prefers-color-scheme: dark)" srcset="assets/dark_bg.png">
+                <source media="(prefers-color-scheme: light)" srcset="assets/bright_bg.png">
+                <img alt="Project Logo" src="assets/bright_bg.png">
+            </picture>
+            <div class="header-info">
+                <h1>Problemset Archive</h1>
+                <p>
+                    <span>Tác giả: <strong>hungg261</strong></span>
+                    <span class="header-tag">Đề thi & Testcase</span>
+                    <span class="header-tag">Polygon/testlib.h</span>
+                    <span class="header-tag">MIT License</span>
+                </p>
+            </div>
         </div>
 
         <div class="content">
-            <h2 class="section-title">Danh mục bài tập</h2>
-            <div id="tree">
-                <div class="status-msg">Đang tải dữ liệu từ GitHub...</div>
+            <div class="main-problems-section">
+                <div class="main-section-header">
+                    <h2 class="main-section-title">Danh mục bài tập</h2>
+                    <span id="problem-count" class="count-badge"></span>
+                </div>
+                <div id="tree">
+                    <div class="status-msg">Đang tải dữ liệu từ GitHub...</div>
+                </div>
             </div>
 
             <div id="readme-wrapper" class="readme-container" style="display: none;">
@@ -404,6 +476,8 @@
         </div>
 
         <div class="footer">
+            <a id="fb-link" href="https://www.facebook.com/hungg261" target="">Facebook ↗</a>
+            <a id="hackmd-link" href="https://hackmd.io/@hungg261" target="_blank">HackMD ↗</a>
             <a id="repo-link" href="#" target="_blank">Xem trên GitHub ↗</a>
         </div>
     </div>
@@ -515,6 +589,7 @@
 
         async function init() {
             const container = document.getElementById('tree');
+            const countBadge = document.getElementById('problem-count');
             
             const [allFiles, readmeText, licenseText] = await Promise.all([
                 fetchFullTree(),
@@ -528,6 +603,10 @@
                     const treeData = parseFlatToTree(problemFiles);
                     container.innerHTML = '';
                     container.appendChild(renderTree(treeData));
+                    
+                    const dirCount = Object.keys(treeData.children).length;
+                    countBadge.textContent = `${dirCount} Thư mục`;
+                    countBadge.style.display = 'inline-block';
                 } else {
                     container.innerHTML = '<div class="status-msg">Không tìm thấy bài tập nào trong thư mục problems.</div>';
                 }
