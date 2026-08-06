@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problemset Archive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #f4f5f7;
+            --card-bg: #ffffff;
+            --text-main: #1c252e;
+            --text-muted: #637381;
+            --border-color: #dfe3e8;
+            --primary-color: #1a365d;
+            --primary-hover: #2b6cb0;
+            --accent-bg: #edf2f7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 28px 32px 20px 32px;
+            border-bottom: 2px solid var(--primary-color);
+            background-color: #fafbfc;
+        }
+
+        .header h1 {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 22px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .header-tag {
+            background-color: #e2e8f0;
+            color: #2d3748;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 32px;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        ul.tree-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.tree-list ul {
+            list-style: none;
+            padding-left: 22px;
+            margin-top: 4px;
+            border-left: 1px dashed var(--border-color);
+            margin-left: 9px;
+        }
+
+        li.tree-item {
+            margin: 4px 0;
+        }
+
+        .folder-title, .file-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 15px;
+            transition: background-color 0.15s ease;
+        }
+
+        .folder-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .folder-title:hover {
+            background-color: var(--accent-bg);
+        }
+
+        .folder-icon {
+            font-style: normal;
+            font-size: 14px;
+            width: 16px;
+            text-align: center;
+            color: #2b6cb0;
+        }
+
+        .file-link {
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .file-link:hover {
+            color: var(--primary-hover);
+            background-color: var(--accent-bg);
+            text-decoration: underline;
+        }
+
+        .file-icon {
+            font-style: normal;
+            font-size: 13px;
+            color: var(--text-muted);
+            width: 16px;
+            text-align: center;
+        }
+
+        .nested-container {
+            display: none;
+        }
+
+        .nested-container.open {
+            display: block;
+        }
+
+        .readme-container, .license-container {
+            margin-top: 36px;
+            padding: 24px;
+            background-color: #fafbfc;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .markdown-body {
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+            font-family: 'Merriweather', Georgia, serif;
+            color: var(--primary-color);
+            margin-top: 16px;
+            margin-bottom: 12px;
+        }
+
+        .markdown-body p {
+            margin-bottom: 12px;
+        }
+
+        .markdown-body code {
+            background-color: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13.5px;
+        }
+
+        .license-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .license-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 16px;
+        }
+
+        .license-card-header {
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-green {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .badge-blue {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-red {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .license-card ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 13.5px;
+        }
+
+        .license-card li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .license-card li::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+        .perm-card li::before {
+            content: "✓";
+            color: #16a34a;
+        }
+
+        .cond-card li::before {
+            content: "ℹ";
+            color: #2563eb;
+        }
+
+        .limit-card li::before {
+            content: "✕";
+            color: #dc2626;
+        }
+
+        .license-details {
+            margin-top: 12px;
+        }
+
+        .license-details summary {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--primary-hover);
+            cursor: pointer;
+            user-select: none;
+            padding: 6px 0;
+        }
+
+        .license-details summary:hover {
+            text-decoration: underline;
+        }
+
+        .license-pre {
+            white-space: pre-wrap;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 12.5px;
+            color: var(--text-muted);
+            background: #ffffff;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow-x: auto;
+            max-height: 240px;
+            overflow-y: auto;
+        }
+
+        .status-msg {
+            font-size: 14px;
+            padding: 16px;
+            border-radius: 4px;
+            background-color: var(--accent-bg);
+            color: var(--text-muted);
+        }
+
+        .footer {
+            padding: 16px 32px;
+            background-color: #fafbfc;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .footer a {
+            color: var(--primary-hover);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Problemset Archive</h1>
+            <p>
+                <span>Tác giả: <strong>hungg261</strong></span>
+                <span class="header-tag">Đề thi & Testcase</span>
+                <span class="header-tag">Polygon/testlib.h</span>
+                <span class="header-tag">MIT License</span>
+            </p>
+        </div>
+
+        <div class="content">
+            <h2 class="section-title">Danh mục bài tập</h2>
+            <div id="tree">
+                <div class="status-msg">Đang tải dữ liệu từ GitHub...</div>
+            </div>
+
+            <div id="readme-wrapper" class="readme-container" style="display: none;">
+                <h2 class="section-title">README.md</h2>
+                <div id="readme-content" class="markdown-body"></div>
+            </div>
+
+            <div id="license-wrapper" class="license-container" style="display: none;">
+                <h2 class="section-title">LICENSE (Giấy phép MIT)</h2>
+                
+                <div class="license-summary">
+                    <div class="license-card perm-card">
+                        <div class="license-card-header">
+                            <span class="badge badge-green">Được phép (Permissions)</span>
+                        </div>
+                        <ul>
+                            <li><strong>Sử dụng thương mại:</strong> Được dùng trong dự án cá nhân, thương mại hoặc doanh nghiệp.</li>
+                            <li><strong>Chỉnh sửa:</strong> Tùy ý sửa đổi, tái cấu trúc hoặc phát triển mở rộng mã nguồn.</li>
+                            <li><strong>Phân phối:</strong> Chia sẻ, phát hành lại bản gốc hoặc bản đã chỉnh sửa.</li>
+                            <li><strong>Sử dụng riêng tư:</strong> Tự do chạy và sử dụng nội bộ mà không bắt buộc công khai lại nguồn.</li>
+                            <li><strong>Cấp phép lại:</strong> Nhúng mã nguồn vào phần mềm khác dưới các điều khoản/giấy phép khác.</li>
+                        </ul>
+                    </div>
+
+                    <div class="license-card cond-card">
+                        <div class="license-card-header">
+                            <span class="badge badge-blue">Điều kiện bắt buộc (Conditions)</span>
+                        </div>
+                        <ul>
+                            <li><strong>Ghi danh tác giả & Bản quyền:</strong> Bắt buộc phải đính kèm thông báo bản quyền gốc (Copyright Notice) và toàn bộ nội dung giấy phép MIT trong mọi bản sao hoặc phần lớn mã nguồn.</li>
+                            <li><strong>Bảo lưu thông tin tác giả:</strong> Giữ nguyên tên tác giả gốc (<code>hungg261/Phan Thành Hưng</code>) trong các tệp phân phối.</li>
+                        </ul>
+                    </div>
+
+                    <div class="license-card limit-card">
+                        <div class="license-card-header">
+                            <span class="badge badge-red">Giới hạn & Miễn trừ (Limitations)</span>
+                        </div>
+                        <ul>
+                            <li><strong>Không bảo hành (No Warranty):</strong> Mã nguồn được cung cấp ở dạng nguyên bản ("AS IS"), không có bất kỳ cam kết hay bảo đảm nào.</li>
+                            <li><strong>Miễn trừ trách nhiệm (No Liability):</strong> Tác giả không chịu trách nhiệm cho bất kỳ tổn thất, thiệt hại hay khiếu nại pháp lý nào phát sinh từ việc sử dụng mã nguồn.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <details class="license-details">
+                    <summary>Xem văn bản gốc</summary>
+                    <pre id="license-content" class="license-pre"></pre>
+                </details>
+            </div>
+        </div>
+
+        <div class="footer">
+            <a id="repo-link" href="#" target="_blank">Xem trên GitHub ↗</a>
+        </div>
+    </div>
+
+    <script>
+        const OWNER = 'hungg261';
+        const REPO = 'problemset-archive';
+        const BASE_PATH = 'problems';
+
+        document.getElementById('repo-link').href = `https://github.com/${OWNER}/${REPO}`;
+
+        async function fetchFullTree() {
+            const url = `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/main?recursive=1`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                const data = await response.json();
+                return data.tree;
+            } catch (error) {
+                console.error("Fetch error:", error);
+                return null;
+            }
+        }
+
+        async function fetchRawFile(filename) {
+            const url = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/${filename}`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) return null;
+                return await response.text();
+            } catch {
+                return null;
+            }
+        }
+
+        function parseFlatToTree(items) {
+            const root = { name: BASE_PATH, type: 'dir', children: {} };
+
+            items.forEach(item => {
+                const parts = item.path.slice(BASE_PATH.length + 1).split('/');
+                let current = root;
+
+                parts.forEach((part, index) => {
+                    const isLast = index === parts.length - 1;
+                    if (!current.children[part]) {
+                        current.children[part] = {
+                            name: part,
+                            path: item.path,
+                            type: isLast ? (item.type === 'tree' ? 'dir' : 'file') : 'dir',
+                            children: {}
+                        };
+                    }
+                    current = current.children[part];
+                });
+            });
+
+            return root;
+        }
+
+        function renderTree(node) {
+            const ul = document.createElement('ul');
+            ul.className = 'tree-list';
+
+            const sortedKeys = Object.keys(node.children).sort((a, b) => {
+                const itemA = node.children[a];
+                const itemB = node.children[b];
+                if (itemA.type === itemB.type) return itemA.name.localeCompare(itemB.name);
+                return itemA.type === 'dir' ? -1 : 1;
+            });
+
+            sortedKeys.forEach(key => {
+                const item = node.children[key];
+                const li = document.createElement('li');
+                li.className = 'tree-item';
+
+                if (item.type === 'dir') {
+                    const folderDiv = document.createElement('div');
+                    folderDiv.className = 'folder-title';
+                    folderDiv.innerHTML = `<i class="folder-icon">▸</i> <span>${item.name}</span>`;
+
+                    const subUlWrapper = document.createElement('div');
+                    subUlWrapper.className = 'nested-container';
+                    
+                    const childUl = renderTree(item);
+                    subUlWrapper.appendChild(childUl);
+
+                    folderDiv.addEventListener('click', () => {
+                        const isOpen = subUlWrapper.classList.contains('open');
+                        subUlWrapper.classList.toggle('open');
+                        folderDiv.querySelector('.folder-icon').textContent = isOpen ? '▸' : '▾';
+                    });
+
+                    li.appendChild(folderDiv);
+                    li.appendChild(subUlWrapper);
+                } else {
+                    const a = document.createElement('a');
+                    a.className = 'file-link';
+                    a.href = `https://github.com/${OWNER}/${REPO}/blob/main/${item.path}`;
+                    a.target = '_blank';
+                    a.innerHTML = `<i class="file-icon">📄</i> <span>${item.name}</span>`;
+                    li.appendChild(a);
+                }
+
+                ul.appendChild(li);
+            });
+
+            return ul;
+        }
+
+        async function init() {
+            const container = document.getElementById('tree');
+            
+            const [allFiles, readmeText, licenseText] = await Promise.all([
+                fetchFullTree(),
+                fetchRawFile('README.md'),
+                fetchRawFile('LICENSE')
+            ]);
+
+            if (allFiles) {
+                const problemFiles = allFiles.filter(item => item.path.startsWith(BASE_PATH + '/'));
+                if (problemFiles.length > 0) {
+                    const treeData = parseFlatToTree(problemFiles);
+                    container.innerHTML = '';
+                    container.appendChild(renderTree(treeData));
+                } else {
+                    container.innerHTML = '<div class="status-msg">Không tìm thấy bài tập nào trong thư mục problems.</div>';
+                }
+            } else {
+                container.innerHTML = '<div class="status-msg">Không thể tải dữ liệu từ GitHub.</div>';
+            }
+
+            if (readmeText) {
+                const readmeWrapper = document.getElementById('readme-wrapper');
+                const readmeContent = document.getElementById('readme-content');
+                readmeContent.innerHTML = marked.parse(readmeText);
+                readmeWrapper.style.display = 'block';
+            }
+
+            if (licenseText) {
+                const licenseWrapper = document.getElementById('license-wrapper');
+                const licenseContent = document.getElementById('license-content');
+                licenseContent.textContent = licenseText;
+                licenseWrapper.style.display = 'block';
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
