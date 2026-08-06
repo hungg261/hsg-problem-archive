@@ -1,11 +1,11 @@
 # Sinh test cho các kì thi Tin học
 
-Kho lưu trữ đề thi/bộ test các kỳ thi lập trình thi đấu Tin học.
+Kho lưu trữ đề thi/bộ test các kỳ thi lập trình thi đấu Tin học. Bộ test tuân theo định dạng Polygon, sử dụng `testlib.h`.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/dark_bg.png">
   <source media="(prefers-color-scheme: light)" srcset="assets/bright_bg.png">
-  <img alt="Project Logo" src="assets/bright_bg.png" style="width: 150px; height: auto;">
+  <img alt="Project Logo" src="assets/bright_bg.png" style="width: 250px; height: auto;">
 </picture>
 
 <hr>
