@@ -5,8 +5,9 @@ Bộ công cụ sinh test chuẩn (testlib/polygon) cho các kỳ thi tuyển si
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/dark_bg.png">
   <source media="(prefers-color-scheme: light)" srcset="assets/bright_bg.png">
-  <img alt="Project Logo" src="assets/bright_bg.png">
+  <img alt="Project Logo" src="assets/bright_bg.png" style="width: 150px; height: auto;">
 </picture>
+
 
 <hr>
 
