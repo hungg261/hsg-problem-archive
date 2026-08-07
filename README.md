@@ -22,3 +22,11 @@ Cấu trúc mẫu: https://github.com/hungg261/polyson/tree/main/polyson/templat
 ## Lưu ý chung
 - Định dạng file input và output lần lượt là `.in` và `.out`. Riêng đối với năm 2026 thì định dạng file input là `.inp`.
 - Trình biên dịch yêu cầu hỗ trợ **C++11** trở lên. Khuyến khích sử dụng phiên bản **C++14**.
+
+## Giấy phép & Thương hiệu
+
+Tên, logo và nhận diện thương hiệu của Problemset Archive được bảo hộ bởi luật sở hữu trí tuệ (Bản quyền và Nhãn hiệu), đồng thời bị loại trừ hoàn toàn khỏi Giấy phép MIT.
+
+Nếu bạn fork, chỉnh sửa hoặc lưu trữ dự án này, bạn bắt buộc phải gỡ bỏ hoàn toàn mọi logo, thương hiệu và tài sản định danh của dự án trước khi xuất bản. Mọi hành vi sử dụng thương hiệu cho mục đích thương mại hoặc tự ý ngầm định có sự chứng thực từ tác giả đều bị nghiêm cấm nếu không có văn bản chấp thuận chính thức.
+
+Phần mã nguồn nền tảng của dự án này vẫn được cấp phép đầy đủ theo [Giấy phép MIT](LICENSE).
